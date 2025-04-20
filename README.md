@@ -60,6 +60,36 @@ Then open your browser to [http://localhost:5173](http://localhost:5173)
 
 ---
 
+---
+
+## ✅ Completed Features
+
+| Feature Category       | Description                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| 🛒 Product List        | Fetched via Jotform API, displayed with name, price, and image                   |
+| 🔍 Product Detail      | Detail page shows all metadata, options, and images for the selected item        |
+| ➕ Add to Cart         | Products can be added from both list and detail views                            |
+| 🧺 Shopping Cart       | Dropdown cart shows live items with quantity and remove button                   |
+| ➖ Remove from Cart    | Products can be removed or decreased from cart via dropdown                      |
+| 🔢 Quantity Management | Automatically increases quantity when item is re-added                           |
+| 💾 LocalStorage Usage  | Selected product data is passed between pages using localStorage                 |
+| 🧭 Navigation          | Fully working navigation with React Router (`ProductsPage`, `ProductDetailPage`) |
+| 🎨 UI Framework        | Responsive design using Tailwind CSS and DaisyUI                                 |
+| 📄 Setup Instructions  | Clear `.env` and usage steps provided in `README.md`                             |
+
+---
+
+## ⭐ Bonus Features Implemented
+
+| Bonus Feature                   | Status     | Notes                                                       |
+| ------------------------------- | ---------- | ----------------------------------------------------------- |
+| ✅ LocalStorage for persistence | ✅ Done    | Used to pass selected product between views                 |
+| 🔜 Checkout page (optional)     | ❌ Not yet | Could be added (payment form, total summary, submit button) |
+| 🔜 Filtering by category        | ❌ Not yet | Could be implemented with `connectedCategories`             |
+| 🔜 Favorite products            | ❌ Not yet | Could be tracked via another local state or localStorage    |
+
+---
+
 ## 📝 Notes
 
 - This is a **development-only app** and is not deployed.
