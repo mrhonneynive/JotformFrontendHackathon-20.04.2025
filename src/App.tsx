@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
-        "https://api.jotform.com/form/251073431687963/payment-info?apiKey=e3b866e087d1eaf6e1e450c94fc55de1",
+        `https://api.jotform.com/form/${import.meta.env.VITE_FORMID_1}/payment-info?apiKey=${import.meta.env.VITE_JOTFORM_API_KEY}`,
       );
       const data = await response.json();
 
