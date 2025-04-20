@@ -27,7 +27,8 @@ const Product = (props: ProductPropsWithAddToCart) => {
     navigate(`/product/${props.pid}`);
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
     addToCart(props);
   };
 
