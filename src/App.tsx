@@ -11,16 +11,18 @@ const App = () => {
   const [cart, setCart] = useState<ProductProps[]>([]);
 
   const addToCart = (product: ProductProps) => {
-    setCart((prev) => {
-      const exists = prev.find((item) => item.pid === product.pid);
-      if (exists) {
-        return prev.map((item) =>
+    setCart((prevCart) => {
+      const itemExists = prevCart.find((item) => item.pid === product.pid);
+
+      if (itemExists) {
+        return prevCart.map((item) =>
           item.pid === product.pid
-            ? { ...item, quantity: item.cartQuantity + 1 }
+            ? { ...item, cartQuantity: item.cartQuantity + 1 }
             : item,
         );
       }
-      return [...prev, { ...product, cartQuantity: 1 }];
+
+      return [...prevCart, { ...product, cartQuantity: 1 }];
     });
   };
 

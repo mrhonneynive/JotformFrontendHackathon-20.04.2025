@@ -21,7 +21,7 @@ function Navbar({ cart }: NavbarProps) {
             cart.map((item, i) => (
               <li key={i} className="mb-2 border-b pb-2 text-sm">
                 <div className="flex justify-between">
-                  <span>{item.name}</span>
+                  <span>{item.name}</span> <span>{item.cartQuantity}</span>
                 </div>
               </li>
             ))
