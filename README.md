@@ -34,9 +34,7 @@ You will need environment variables to fetch data from the Jotform API.
 
 ```env
 VITE_JOTFORM_API_KEY=your_jotform_api_key_here
-VITE_FORMID_1=your_first_form_id
-VITE_FORMID_2=your_second_form_id
-VITE_FORMID_3=your_third_form_id
+VITE_FORMID=your_form_id
 ```
 
 ### 4. Start the app via development server
