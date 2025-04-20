@@ -1,9 +1,20 @@
 import { ProductProps } from "../types/productprops";
 import { useNavigate } from "react-router";
 
-const Product = (props: ProductProps) => {
-  const { name, images, description, price, hasSpecialPricing, options } =
-    props;
+interface ProductPropsWithAddToCart extends ProductProps {
+  addToCart: (product: ProductProps) => void;
+}
+
+const Product = (props: ProductPropsWithAddToCart) => {
+  const {
+    name,
+    images,
+    description,
+    price,
+    hasSpecialPricing,
+    options,
+    addToCart,
+  } = props;
 
   const specialPrices =
     options
@@ -14,6 +25,10 @@ const Product = (props: ProductProps) => {
   const handleClick = () => {
     localStorage.setItem("selectedProduct", JSON.stringify(props));
     navigate(`/product/${props.pid}`);
+  };
+
+  const handleAddToCart = () => {
+    addToCart(props);
   };
 
   return (
@@ -45,7 +60,10 @@ const Product = (props: ProductProps) => {
         </p>
       )}
 
-      <button className="w-full rounded bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600">
+      <button
+        onClick={handleAddToCart}
+        className="w-full rounded bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600"
+      >
         Add to Cart
       </button>
     </div>

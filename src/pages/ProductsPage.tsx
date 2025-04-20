@@ -4,7 +4,7 @@ import { ProductProps } from "../types/productprops";
 import { parseProduct } from "../utils/utils";
 import Product from "../components/Product";
 
-function ProductsPage() {
+function ProductsPage({ addToCart }) {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function ProductsPage() {
       <h1 className="text-white-800 mb-6 text-3xl font-bold">Products</h1>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
-          <Product {...product} />
+          <Product {...product} addToCart={addToCart} />
         ))}
       </div>
     </div>

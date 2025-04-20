@@ -19,7 +19,7 @@ const App = () => {
       <Navbar cart={cart} />
 
       <Routes>
-        <Route path="/" element={<ProductsPage />} />
+        <Route path="/" element={<ProductsPage addToCart={addToCart} />} />
         <Route path="/product/:pid" element={<ProductDetailPage />} />
         {/* <Route path="/cart" element={<CartPage cart={cart} />} /> */}
         <Route path="*" element={<div className="p-6">404 Not Found</div>} />
