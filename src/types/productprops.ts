@@ -20,4 +20,13 @@ export interface ProductProps {
   hasSpecialPricing?: string;
   fitImageToCanvas?: string;
   showSubtotal?: string;
+  connectedCategories?: string;
+  connectedProducts?: string;
+  period?: string;
+  recurringtimes?: string;
+  setupfee?: string;
+  trial?: string;
+  isStockControlEnabled?: string;
+  isLowStockAlertEnabled?: string;
+  stockQuantityAmount?: string;
 }
