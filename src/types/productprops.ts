@@ -29,4 +29,5 @@ export interface ProductProps {
   isStockControlEnabled?: string;
   isLowStockAlertEnabled?: string;
   stockQuantityAmount?: string;
+  cartQuantity?: number;
 }
