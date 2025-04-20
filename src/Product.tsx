@@ -2,7 +2,10 @@ import { ProductProps } from "./types/productprops";
 
 const Product = (props: ProductProps) => {
   return (
-    <div className="product" key={props.pid}>
+    <div
+      className="product flex h-80 w-80 flex-col items-center justify-center"
+      key={props.pid}
+    >
       <h2>{props.name}</h2>
       <img
         src={JSON.parse(props.images)}
