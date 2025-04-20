@@ -12,5 +12,14 @@ export function parseProduct(raw: any): ProductProps {
     hasSpecialPricing: raw.hasSpecialPricing,
     fitImageToCanvas: raw.fitImageToCanvas,
     showSubtotal: raw.showSubtotal,
+    connectedCategories: raw.connectedCategories,
+    connectedProducts: raw.connectedProducts,
+    period: raw.period,
+    recurringtimes: raw.recurringtimes,
+    setupfee: raw.setupfee,
+    trial: raw.trial,
+    isStockControlEnabled: raw.isStockControlEnabled,
+    isLowStockAlertEnabled: raw.isLowStockAlertEnabled,
+    stockQuantityAmount: raw.stockQuantityAmount,
   };
 }
