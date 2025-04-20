@@ -1,4 +1,5 @@
 import { ProductProps } from "../types/productprops";
+import { useNavigate } from "react-router";
 
 const Product = (props: ProductProps) => {
   const { name, images, description, price, hasSpecialPricing, options } =
@@ -9,8 +10,17 @@ const Product = (props: ProductProps) => {
       .find((opt) => opt.specialPricing && opt.specialPrices)
       ?.specialPrices?.split(",") || [];
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    localStorage.setItem("selectedProduct", JSON.stringify(props));
+    navigate(`/product/${props.pid}`);
+  };
+
   return (
-    <div className="w-72 rounded-lg border bg-white p-4 shadow transition hover:shadow-md">
+    <div
+      onClick={handleClick}
+      className="w-72 rounded-lg border bg-white p-4 shadow transition hover:shadow-md"
+    >
       <h2 className="mb-2 text-lg font-semibold text-gray-800">{name}</h2>
 
       <img

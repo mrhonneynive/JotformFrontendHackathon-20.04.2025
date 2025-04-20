@@ -1,35 +1,19 @@
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
 import { ProductProps } from "../types/productprops";
+import Product from "../components/Product";
 
 function ProductDetailPage() {
-  const { pid } = useParams();
-  const [product, setProduct] = useState<ProductProps | null>(null);
+  const stored = localStorage.getItem("selectedProduct");
+  const product: ProductProps = stored ? JSON.parse(stored) : null;
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await fetch(
-        `https://api.jotform.com/form/${import.meta.env.VITE_FORMID_1}/payment-info?apiKey=${import.meta.env.VITE_JOTFORM_API_KEY}`,
-      );
-      const data = await response.json();
-
-      const found = data.content.products.find(
-        (p: ProductProps) => p.pid === pid,
-      );
-      setProduct(found);
-    };
-
-    fetchProduct();
-  }, [pid]);
-
-  if (!product) return <div>Loading...</div>;
+  if (!product) {
+    return (
+      <div className="p-6 text-red-500">go back to home page and try again</div>
+    );
+  }
 
   return (
-    <div>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <p>${product.price}</p>
-      {/* show image, add to cart, etc. */}
+    <div className="p-6">
+      <Product {...product} />
     </div>
   );
 }
