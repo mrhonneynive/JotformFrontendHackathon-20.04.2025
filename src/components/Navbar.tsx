@@ -14,7 +14,7 @@ function Navbar({ cart, removeFromCart }: NavbarProps) {
       </Link>
 
       <details className="dropdown dropdown-end">
-        <summary className="btn btn-sm">Cart ({cart.length})</summary>
+        <summary className="btn btn-sm">Cart ({cart.length} item type)</summary>
         <ul className="dropdown-content menu rounded-box bg-base-100 z-20 w-64 p-4 shadow">
           {cart.length === 0 ? (
             <li className="text-sm text-gray-500">Cart is empty</li>
