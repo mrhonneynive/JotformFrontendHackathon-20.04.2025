@@ -14,6 +14,8 @@ const Product = (props: ProductPropsWithAddToCart) => {
     hasSpecialPricing,
     options,
     addToCart,
+    pid,
+    type = "card",
   } = props;
 
   const specialPrices =
@@ -22,9 +24,12 @@ const Product = (props: ProductPropsWithAddToCart) => {
       ?.specialPrices?.split(",") || [];
 
   const navigate = useNavigate();
+
   const handleClick = () => {
-    localStorage.setItem("selectedProduct", JSON.stringify(props));
-    navigate(`/product/${props.pid}`);
+    if (type === "card") {
+      localStorage.setItem("selectedProduct", JSON.stringify(props));
+      navigate(`/product/${pid}`);
+    }
   };
 
   const handleAddToCart = (e) => {
@@ -32,41 +37,59 @@ const Product = (props: ProductPropsWithAddToCart) => {
     addToCart(props);
   };
 
+  const isVisual = images.length > 0 && images[0];
+
   return (
     <div
       onClick={handleClick}
-      className="w-72 rounded-lg border bg-white p-4 shadow transition hover:shadow-md"
+      className={`${type === "card" ? "w-72 cursor-pointer" : "w-full gap-8 lg:flex"} rounded-lg border bg-white p-4 shadow transition hover:shadow-md`}
     >
-      <h2 className="mb-2 text-lg font-semibold text-gray-800">{name}</h2>
-
-      <img
-        src={images[0]}
-        alt={name}
-        className="mb-3 h-40 w-full rounded object-cover"
-      />
-
-      <p className="mb-3 text-sm text-gray-600">{description}</p>
-
-      {hasSpecialPricing === "1" && specialPrices.length > 0 ? (
-        <div className="mb-3 flex flex-col gap-1">
-          {specialPrices.map((p, i) => (
-            <span key={i} className="text-sm text-gray-700">
-              ${parseFloat(p).toFixed(2)}
-            </span>
-          ))}
-        </div>
-      ) : (
-        <p className="mb-3 text-base font-bold text-blue-600">
-          ${parseFloat(price).toFixed(2)}
-        </p>
+      {isVisual && (
+        <img
+          src={images[0]}
+          alt={name}
+          className={`${
+            type === "card"
+              ? "mb-3 h-40 w-full rounded object-cover"
+              : "mb-4 w-full max-w-md rounded object-cover shadow lg:mb-0"
+          }`}
+        />
       )}
 
-      <button
-        onClick={handleAddToCart}
-        className="w-full rounded bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600"
-      >
-        Add to Cart
-      </button>
+      <div className={`${type === "detail" ? "flex-1" : ""}`}>
+        <h2
+          className={`font-semibold text-gray-800 ${
+            type === "card" ? "mb-2 text-lg" : "mb-3 text-3xl"
+          }`}
+        >
+          {name}
+        </h2>
+
+        {description && (
+          <p className="mb-3 text-sm text-gray-600">{description}</p>
+        )}
+
+        {hasSpecialPricing === "1" && specialPrices.length > 0 ? (
+          <div className="mb-3 flex flex-col gap-1">
+            {specialPrices.map((p, i) => (
+              <span key={i} className="text-sm text-gray-700">
+                ${parseFloat(p).toFixed(2)}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p className="mb-3 text-base font-bold text-blue-600">
+            ${parseFloat(price).toFixed(2)}
+          </p>
+        )}
+
+        <button
+          onClick={handleAddToCart}
+          className="mt-2 w-full rounded bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600"
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 };

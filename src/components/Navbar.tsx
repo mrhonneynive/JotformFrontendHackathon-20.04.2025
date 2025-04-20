@@ -3,9 +3,10 @@ import { ProductProps } from "../types/productprops";
 
 interface NavbarProps {
   cart: ProductProps[];
+  removeFromCart: (pid: string) => void;
 }
 
-function Navbar({ cart }: NavbarProps) {
+function Navbar({ cart, removeFromCart }: NavbarProps) {
   return (
     <nav className="navbar flex justify-between bg-white px-6 py-4 shadow">
       <Link to="/" className="text-xl font-bold text-gray-800">
@@ -22,6 +23,14 @@ function Navbar({ cart }: NavbarProps) {
               <li key={i} className="mb-2 border-b pb-2 text-sm">
                 <div className="flex justify-between">
                   <span>{item.name}</span> <span>{item.cartQuantity}</span>
+                  <button
+                    onClick={() => {
+                      removeFromCart(item.pid);
+                    }}
+                    className="text-red-500 hover:underline"
+                  >
+                    ✕
+                  </button>
                 </div>
               </li>
             ))

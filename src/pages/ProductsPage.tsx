@@ -10,7 +10,7 @@ function ProductsPage({ addToCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
-        `https://api.jotform.com/form/${import.meta.env.VITE_FORMID_1}/payment-info?apiKey=${import.meta.env.VITE_JOTFORM_API_KEY}`,
+        `https://api.jotform.com/form/${import.meta.env.VITE_FORMID_2}/payment-info?apiKey=${import.meta.env.VITE_JOTFORM_API_KEY}`,
       );
       const data = await response.json();
       setProducts(data.content.products.map(parseProduct));

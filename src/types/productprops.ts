@@ -16,6 +16,7 @@ export interface ProductProps {
   price: string;
   images: string[]; // parsed from stringified array
   options: ProductOption[]; // parsed from stringified array
+  type: string;
   hasQuantity?: string;
   hasSpecialPricing?: string;
   fitImageToCanvas?: string;

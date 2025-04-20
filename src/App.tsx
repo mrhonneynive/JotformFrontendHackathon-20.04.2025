@@ -26,13 +26,28 @@ const App = () => {
     });
   };
 
+  const removeFromCart = (pid: string) => {
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.pid === pid
+            ? { ...item, cartQuantity: item.cartQuantity - 1 }
+            : item,
+        )
+        .filter((item) => item.cartQuantity > 0),
+    );
+  };
+
   return (
     <>
-      <Navbar cart={cart} />
+      <Navbar cart={cart} removeFromCart={removeFromCart} />
 
       <Routes>
         <Route path="/" element={<ProductsPage addToCart={addToCart} />} />
-        <Route path="/product/:pid" element={<ProductDetailPage />} />
+        <Route
+          path="/product/:pid"
+          element={<ProductDetailPage addToCart={addToCart} />}
+        />
         {/* <Route path="/cart" element={<CartPage cart={cart} />} /> */}
         <Route path="*" element={<div className="p-6">404 Not Found</div>} />
       </Routes>
